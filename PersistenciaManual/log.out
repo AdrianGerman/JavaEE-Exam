@@ -1,0 +1,26 @@
+2024-07-24 11:26:50 INFO  AlumnoFacade:22 - Cargando configuración desde: admintx_manual_escritorio.properties
+2024-07-24 11:26:50 INFO  AlumnoFacade:26 - TransaccionFactory inicializado correctamente.
+2024-07-24 11:26:50 INFO  AlumnoFacade:126 - Iniciando transacción para obtener todos los alumnos...
+2024-07-24 11:26:50 DEBUG FabricaConexionesJdbc:199 - Cargando configuración: admintx_manual_escritorio.properties
+2024-07-24 11:26:50 DEBUG ConfiguracionDaoProperties:25 - obtenerConfiguracion(admintx_manual_escritorio.properties)
+2024-07-24 11:26:50 DEBUG ConfiguracionDaoProperties:54 - Configuración [ENTORNO='null'	RECURSO='null'	URL='null'	DRIVER='null'	USUARIO='null'	CONTRASEÑA='null']
+2024-07-24 11:26:50 ERROR FabricaConexionesJdbc:221 - 
+java.lang.NullPointerException
+	at java.base/java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1011)
+	at java.base/java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1006)
+	at java.base/java.util.Properties.put(Properties.java:1301)
+	at administrador.transacciones/com.matco.administradorconexiones.FabricaConexionesJdbc.obtenerConexion(FabricaConexionesJdbc.java:209)
+	at administrador.transacciones/com.matco.administradortransacciones.dao.jdbc.TransaccionJdbc.iniciar(TransaccionJdbc.java:40)
+	at PersistenciaManual/com.manual.facade.AlumnoFacade.obtenerTodosAlumnos(AlumnoFacade.java:127)
+	at PersistenciaManual/com.manual.main.Main.main(Main.java:17)
+2024-07-24 11:26:50 WARN  AlumnoFacade:135 - No se pudo obtener todos los registros: ALUMNOS
+java.lang.NullPointerException: Cannot invoke "java.sql.Connection.setAutoCommit(boolean)" because "conexion" is null
+	at administrador.transacciones/com.matco.administradortransacciones.dao.jdbc.TransaccionJdbc.iniciar(TransaccionJdbc.java:41)
+	at PersistenciaManual/com.manual.facade.AlumnoFacade.obtenerTodosAlumnos(AlumnoFacade.java:127)
+	at PersistenciaManual/com.manual.main.Main.main(Main.java:17)
+2024-07-24 11:26:50 WARN  AlumnoFacade:137 - Intentando hacer rollback al obtener el registro: ALUMNOS
+2024-07-24 11:26:50 ERROR AlumnoFacade:140 - Fallo al hacer rollback ALUMNOS
+java.lang.NullPointerException: Cannot invoke "Object.hashCode()" because the return value of "com.matco.administradortransacciones.dao.jdbc.TransaccionJdbc.getConexion()" is null
+	at administrador.transacciones/com.matco.administradortransacciones.dao.jdbc.TransaccionJdbc.rollback(TransaccionJdbc.java:66)
+	at PersistenciaManual/com.manual.facade.AlumnoFacade.obtenerTodosAlumnos(AlumnoFacade.java:138)
+	at PersistenciaManual/com.manual.main.Main.main(Main.java:17)
