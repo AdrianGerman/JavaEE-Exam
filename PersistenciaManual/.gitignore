@@ -3,3 +3,5 @@
 target/
 .project
 .classpath
+manual.log
+admintx_manual_escritorio.properties
