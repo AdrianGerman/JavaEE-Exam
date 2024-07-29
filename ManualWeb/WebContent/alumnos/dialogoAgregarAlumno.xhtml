@@ -1,0 +1,38 @@
+<HTML xmlns = "http://www.w3.org/1999/xhtml"
+xmlns:ui = "http://java.sun.com/jsf/facelets"
+xmlns:h = "http://java.sun.com/jsf/html"
+xmlns:f = "http://java.sun.com/jsf/core"
+xmlns:p = "http://primefaces.org/ui">
+
+<p:dialog header="ALTA ALUMNO" widgetVar="altaAlumno" id="altaAlumno"
+appendTo="@(body)" dynamic="false" resizable="false" modal="true"
+showEffect="fade" hideEffect="fade" height="400px" width="450px"
+closable="false">
+<h:form id="formDialogAgregar">
+<p:panel style="border:none">
+<p:panelGrid columns="2">
+<p:outputLabel value="Nombre:" for="nombre"/>
+<p:inputText id="nombre" value="#{administradorAlumnosBean.nombres}" />
+<p:outputLabel value = "Apellido Paterno: " for="apellidoPaterno"/>
+<p:inputText id="apellidoPaterno" value="#{administradorAlumnosBean.apellidoPaterno}" />
+<p:outputLabel value = "Apellido Materno: " for="apellidoMaterno"/>
+<p:inputText id="apellidoMaterno" value="#{administradorAlumnosBean.apellidoMaterno}" />
+</p:panelGrid>
+<div style="margin:10px; display: block; text-align: center">
+<p:commandButton value = "Registrar"
+oncomplete="PF('altaAlumno').hide();"
+process="@parent"
+actionListener="#{administradorAlumnosBean.agregarAlumno}"
+update="nombre, apellidoPaterno, apellidoMaterno, :formAlumnos:tablaAlumnos, :formAlumnos:menuBar,
+:formAlumnos:growl"/>
+<br></br><br></br>
+<p:commandButton value="Cancelar" onclick="PF('altaAlumno').hide();"
+actionListener="#{administradorAlumnosBean.reload}"
+update="nombre, apellidoPaterno, apellidoMaterno,
+:formAlumnos:tablaAlumnos, :formAlumnos:menuBar"/>
+
+</div>
+</p:panel>
+</h:form>
+</p:dialog>
+</HTML>
